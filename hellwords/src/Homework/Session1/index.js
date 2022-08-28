@@ -1,6 +1,6 @@
 import React from "react";
 import "./intro.css";
-import image from "../../images/man.jpg";
+import Image from "./../../images/man/jpg";
 
 const TEXT__INTRO = `Park Chae-young (tiếng Hàn: 박채영; tên tiếng Anh: Roseanne Park, sinh ngày 11 tháng 2 năm 1997), 
   thường được biết đến với nghệ danh Rosé (Hangul: 로제)[2] là nữ ca sĩ người New Zealand gốc Hàn Quốc, 
@@ -16,7 +16,7 @@ const user = {
   firstName: "Park",
   lastName: "Chae-young",
   nickName: "Rosé",
-  avatarUrl: image,
+  avatarUrl: Image,
   profile: "https://www.instagram.com/roses_are_rosie/",
 };
 
@@ -25,14 +25,14 @@ const userLeft = [
     firstName: "Park1",
     lastName: "Chae-young",
     nickName: "Rosé",
-    avatarUrl: image,
+    avatarUrl: Image,
     profile: "https://www.instagram.com/roses_are_rosie/",
   },
   {
     firstName: "Park2",
     lastName: "Chae-young",
     nickName: "Rosé",
-    avatarUrl: image,
+    avatarUrl: Image,
     profile: "https://www.instagram.com/roses_are_rosie/",
   },
 
@@ -40,7 +40,7 @@ const userLeft = [
     firstName: "Park3",
     lastName: "Chae-young",
     nickName: "Rosé",
-    avatarUrl: image,
+    avatarUrl: Image,
     profile: "https://www.instagram.com/roses_are_rosie/",
   },
 ];
@@ -57,6 +57,7 @@ let introduction = React.createElement(
 );
 
 function render(user) {
+  console.log(user.avatarUrl)
   return (
     <React.Fragment>
       <div className="card" style={cardStyle}>
@@ -65,16 +66,17 @@ function render(user) {
           src={user.avatarUrl}
           width="200"
           height="300"
-          alt={formatName(user)}
-          style={{
-            objectFit: "contain",
-          }}
-        ></img>
-        <div className="card-body">
+          alt="img"
+          // alt={formatName(user)}
+          // style={{
+          //   objectFit: "contain",
+          // }}
+        />
+        { <div className="card-body">
           <h5 className="card-title">{formatName(user)}</h5>
           {introduction}
           {gotoProfile}
-        </div>
+        </div> }
       </div>
     </React.Fragment>
   );
@@ -82,7 +84,7 @@ function render(user) {
 
 function formatName(user) {
   return user.firstName + " " + user.lastName;
-}
+ }
 
 function Intro() {
   return (
