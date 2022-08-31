@@ -1,20 +1,98 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./index.css";
+import Image from "../src/images/man.jpg";
 
-function App() {
+const TEXT__INTRO = `Park Chae-young (tiếng Hàn: 박채영; tên tiếng Anh: Roseanne Park, sinh ngày 11 tháng 2 năm 1997), 
+  thường được biết đến với nghệ danh Rosé (Hangul: 로제)[2] là nữ ca sĩ người New Zealand gốc Hàn Quốc, 
+  thành viên của nhóm nhạc nữ Blackpink do YG Entertainment thành lập và quản lý.`;
+
+const cardStyle = {
+  width: "50%",
+  height: "500px",
+  margin: "3% auto",
+};
+
+const user = {
+  firstName: "Park",
+  lastName: "Chae-young",
+  nickName: "Rosé",
+  avatarUrl: Image,
+  profile: "https://www.instagram.com/roses_are_rosie/",
+};
+
+const userLeft = [
+  {
+    firstName: "Park1",
+    lastName: "Chae-young",
+    nickName: "Rosé",
+    avatarUrl: Image,
+    profile: "https://www.instagram.com/roses_are_rosie/",
+  },
+  {
+    firstName: "Park2",
+    lastName: "Chae-young",
+    nickName: "Rosé",
+    avatarUrl: Image,
+    profile: "https://www.instagram.com/roses_are_rosie/",
+  },
+
+  {
+    firstName: "Park3",
+    lastName: "Chae-young",
+    nickName: "Rosé",
+    avatarUrl: Image,
+    profile: "https://www.instagram.com/roses_are_rosie/",
+  },
+];
+
+let gotoProfile = (
+  <a href={user.profile} className="btn btn-primary">
+    More... {user.nickName}
+  </a>
+);
+let introduction = React.createElement(
+  "p",
+  { className: "card-text modify__color" },
+  TEXT__INTRO
+);
+
+function render(user) {
+  return (
+    <React.Fragment>
+      <div className="card" style={cardStyle}>
+        <img
+          className="card-img-top"
+          src={user.avatarUrl}
+          width="200"
+          height="200"
+          alt={formatName(user)}
+          style={{
+            objectFit: "contain",
+          }}
+        ></img>
+        <div className="card-body">
+          <h5 className="card-title">{formatName(user)}</h5>
+          {introduction}
+          {gotoProfile}
+        </div>
+      </div>
+    </React.Fragment>
+  );
+}
+
+function formatName(user) {
+  return user.firstName + " " + user.lastName;
+}
+
+function Intro() {
   return (
     <>
-    <img src='https://image.shutterstock.com/image-photo/joyful-surprised-bearded-man-red-600w-1897167568.jpg'>
-      
-    </img>
-    <p>Nguyen Trinh Vinh Phuoc</p>
-    <p>Nam</p>
-    <p>14/08</p>
-    <p>Da Nang</p>
-
-
+      <div className="row">
+        <div className="col">{userLeft.map((u) => render(u))}</div>
+        <div className="col">{[...Array(3)].map(() => render(user))}</div>
+      </div>
     </>
   );
 }
 
-export default App;
+export default Intro;
